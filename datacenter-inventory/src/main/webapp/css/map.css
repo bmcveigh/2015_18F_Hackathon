@@ -1,0 +1,13 @@
+#map {
+  width: 1000px;
+  height:700px;
+}
+
+.map-label {
+    font-size:10px;
+    color: white !important;
+}
+
+.overview {
+    padding-left: 20px;
+}

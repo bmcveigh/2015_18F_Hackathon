@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Data Center Consolidation - 18F Hackathon (Team CGI Federal RAP)</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">18F Hackathon - Data Center Consolidation</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#" class="navbar-home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="manage-password">Manage Password</a>
+                    </li>
+                    <li>
+                        <a href="#" class="contact-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container login content-screen">
+        <div class="alert alert-danger incorrect" role="alert" style="display: none;">Incorrect User ID and password</div>
+
+        <div class="row">
+            <h1>Login with Your...</h1>
+            <div class="col-md-6">
+              <h2>User ID and Password</h2>
+              <form>
+                  <div class="form-group">
+                    <label for="userid">User ID</label>
+                    <input type="text" class="form-control" id="userid" placeholder="User ID">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                  </div>
+                  <a href="#" class="btn btn-primary login-btn">Login</a>
+              </form>
+            </div>
+            <div class="col-md-6 well">
+              <h2>PIV or CAC Card</h2>
+              <p>Please make sure your card is plugged into the reader</p>
+              <img src="img/piv.png" width="70%" height="225px">
+           </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <div class="federal-warning-text">
+                <p>WARNING: This system contains U.S. Government Data. Unauthorized use of this system is prohibited.</p>
+                <p>This computer system, including all related equipment, networks, and network devices (specifically including Internet access) are provided only for authorized U.S. Government use. U.S. Government computer systems may be monitored for all lawful purposes, including to ensure that their use is authorized, for management of the system, to facilitate protection against unauthorized access, and to verify security procedures, survivability, and operational security. Monitoring includes active attacks by authorized U.S. Government entities to test or verify the security of this system. During monitoring, information may be examined, recorded, copied and used for authorized purposes. All information, including personal information, placed or sent over this system may be monitored.</p>
+                <p>Use of this computer system, authorized or unauthorized, constitutes consent to monitoring of this system. Unauthorized use may subject you to criminal prosecution. Evidence of unauthorized use collected during monitoring may be used for administrative, criminal, or other adverse action. Use of this system constitutes consent to monitoring for these purposes. </p>
+                <p>Use of this system implies understanding of these terms and conditions.</p>
+                <p>Note — Per our personal privacy policy, no personal information will be collected on this site beyond that provided by you when you registered for a MAX User ID.</p>
+            </div>
+        </div>
+      </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container content-screen logged-in main-menu">
+        <h1>Choose an option:</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                <button type="button" class="btn btn-lg"><a href="#" class="data-center" dest="data-center-selection" operation="update">Update a Data Center's Inventory</a></button>
+                <button type="button" class="btn btn-lg"><a href="#" class="export-data" dest="export-data-selection">Export Data for OMB</a></button>
+                <button type="button" class="btn btn-lg"><a href="#" class="geomap-view" dest="geomap-selection">View all Data Centers on Map</a></button>
+                <button type="button" class="btn btn-lg"><a href="#" class="geomap-view" dest="data-center-selection" operation="audit">Audit Trail</a></button>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content-screen logged-out forgot-password">
+        <h1>Forgot Your Password?</h1>
+        <div class="row">
+            <div class="col-md-6 well">
+                <div class="form-group">
+                    <label for="email">Enter your email address</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email">
+                </div>
+                <a href="#" class="btn btn-primary">Submit</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content-screen logged-out contact-us">
+        <h1>Contact Us</h1>
+        <div class="row">
+            <div class="col-md-12 well">
+                <div class="form-group">
+                    <form>
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                      </div>
+                      <div class="form-group">
+                        <label for="title">Enter Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="title">Description</label>
+                        <textarea class="form-control" id="description" placeholder="Description"></textarea>
+                      </div>
+                      <a href="#" class="btn btn-primary">Submit</a>
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="container content-screen logged-in audit-trail-screen">
+        <h1>Audit Trail</h1>
+        <div class="row">
+            <div class="col-md-12 content"></div>
+        </div>
+    </div>
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <script src="js/global.js"></script>
+
+    <div class="container content-screen logged-in data-center-selection">
+        <h1>Which Data Center?</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="datacenter-list">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content-screen logged-in update-form">
+        <h1>Update Inventory for:</h1>
+        <h2></h2>
+        <form class="form-horizontal" role="form">
+            <div class="row">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="form-group">
+                        <label for="inputFiscalYear" class="col-md-4 control-label">Fiscal Year:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" id="inputFiscalYear" placeholder="2015" type="number">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--
+      "quarter" : "Q1",
+      "fte" : 40,
+      "fteCost" : null,
+      "electricityIndcluded" : false,
+      "electricityMetered" : false,
+      "totalPowerCapacity" : null,
+      "totalItPowerCapacity" : null,
+      "averageElectricityUsage" : null,
+      "averageItElectricityUsage" : null,
+      "costPerKilowattHour" : null,
+      "rackCount" : 37,
+      "totalIbmMainframes" : 0,
+      "totalOtherMainframes" : 0,
+      "totalWindowsServers" : 7,
+      "totalUnixServers" : 3,
+      "totalLinuxServers" : 14,
+      "totalHpcClusterNodes" : 3,
+      "otherServers" : 0,
+      "totalVirtualHosts" : 7,
+      "totalVirtualOs" : 49,
+      "totalStorage" : 149,
+      "usedStorage" : 101,
+      "closingStage" : "Not Closing",
+      "closingFiscalYear" : null,
+      "closingQuarter" : null,
+      "realPropertyDisposition" : "Q2/2015",
+      "totalFloorAreaReclaimed" : null,
+      "totalDecomissionedServers" : 16,
+      "totalServersMoved" : null,
+      "overallFteReduction" : null
+-->
+
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputEmail" class="col-md-4 control-label">FTE:</label>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="fte" placeholder="10">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputPassword" class="col-md-4 control-label">FTE Cost ($):</label>
+          <div class="col-md-8">
+            <input type="number" class="form-control" id="fteCost" placeholder="10,000">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputLabel3" class="col-md-4 control-label">Electricity Included:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="electricityIndcluded" placeholder="Yes">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="inputLabel4" class="col-md-4 control-label">Electricity Metered:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="electricityMetered" placeholder="Yes">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input5" class="col-md-4 control-label">Total IT Power Capacity:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalItPowerCapacity" placeholder="245">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input6" class="col-md-4 control-label">Average Electricty Usage:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="averageElectricityUsage" placeholder="10">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input7" class="col-md-4 control-label">Average IT Electricity Usage:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="averageItElectricityUsage" placeholder="45">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input8" class="col-md-4 control-label">Cost Per Kilowatt/Hour:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="costPerKilowattHour" placeholder="1.5">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input9" class="col-md-4 control-label">Rack Count:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="rackCount" placeholder="3">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total IBM Mainframes:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalIbmMainframes" placeholder="1">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Other Mainframes:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalOtherMainframes" placeholder="00">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Windows Servers:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalWindowsServers" placeholder="167">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Unix Servers:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalUnixServers" placeholder="312">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Linux Mainframes:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalLinuxServers" placeholder="355">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total HPC Cluster Nodes:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalHpcClusterNodes" placeholder="0">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Other Servers:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="otherServers" placeholder="2">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Virtual Hosts:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalVirtualHosts" placeholder="16">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Virtual OS:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalVirtualOs" placeholder="733">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Storage:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalStorage" placeholder="9337">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">User Storage:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="usedStorage" placeholder="8418">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Closing Stage:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="closingStage" placeholder="No">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Closing Fiscal Year:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="closingFiscalYear" placeholder="NA">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Closing Quarter:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="closingQuarter" placeholder="NA">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Real Property Description Virtual Hosts:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="realPropertyDisposition" placeholder="Server Room Delta">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Floor Area Reclaimed:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalFloorAreaReclaimed" placeholder="85">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Decomissioned Servers:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalDecomissionedServers" placeholder="2">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Servers Moved:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalServersMoved" placeholder="4">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Total Floor Area Reclaimed:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="totalFloorAreaReclaimed" placeholder="293">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="form-group">
+          <label for="input10" class="col-md-4 control-label">Overall FRE Reduction:</label>
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="overallFteReduction" placeholder="2">
+          </div>
+        </div>
+      </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="form-group">
+                <div class="col-md-8">
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        </form>
+    </div>
+
+    <div class="container content-screen logged-in geomap-selection">
+        <h1>Data Centers Map (Sized by Total Floor Area)</h1>
+        <iframe src="map.html" />
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+.logged-in, .logged-out {
+    display: none;
+}
+
+.geomap-selection iframe {
+    border: 0 none;
+    height: 800px;
+    overflow: hidden;
+    width: 1008px;
+}
